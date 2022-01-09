@@ -36,17 +36,9 @@ public class UnaryGate extends Gate
     }
     
 
-    @Override
     public boolean getValue()
     {
         return false;
     }
-    
-    @Override
-    public FloatArg getFloatValue()
-    {
-        return new FloatArg(false, 0.00);
-    }
-    
     
 }

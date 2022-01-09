@@ -11,12 +11,15 @@ package circuitry;
  */
 public interface FloatFunctions 
 {
+    //members
+
+    /**
+     *
+     */
+    public FloatArg argument = null;
+
     // functions go here /////////////////////
     
-    public FloatArg getDoubleValue();
-    public boolean isBoolean();      // lets us know if the FloatArg contained is a boolean or not.
-    public boolean getBoolean();     // gets the boolean value of the FloatArg
-    public double getDouble();       // gets the doubl/float value of the  FloatArt
-    // public void setValue(boolean bValue, double dValue);    // allows you to set the value of the FloatArg
-  
+    public FloatArg getFloatValue();
+    
 }

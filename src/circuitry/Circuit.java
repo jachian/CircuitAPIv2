@@ -146,4 +146,22 @@ public final class Circuit{
         
         
     }
+<<<<<<< HEAD
+=======
+
+    public void addGteGate(String name) {
+        Gte gte = new Gte();
+        gates.put( name, gte);
+        
+    }
+
+ 
+
+    public void setInputValue(String name, double value ) {
+        InputFloat f1 = (InputFloat) gates.get(name);
+        f1.setValue(value);
+    }
+
+    
+>>>>>>> 3224ab4c3555b6a4e6020714d660ff3a5c94b2df
 }

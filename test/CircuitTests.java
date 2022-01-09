@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package circuitry;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author 20215199
  */
-public abstract class Gate 
-{
-    // attributes
-    // mthods
-    public abstract boolean getValue(); 
-
+public class CircuitTests {
+    
+    public CircuitTests() {
+    }
+    
 }
