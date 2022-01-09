@@ -6,7 +6,7 @@ package circuitry;
  *
  * @author 20215191
  */
-public class CustomUnaryGate extends UnaryGate{
+class CustomUnaryGate extends UnaryGate{
 
         private CustomUnaryOperation operation;
 

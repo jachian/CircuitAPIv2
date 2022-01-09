@@ -9,7 +9,7 @@ package circuitry;
  *
  * @author 20215199
  */
-public interface FloatFunctions 
+interface FloatFunctions 
 {
     //members
 

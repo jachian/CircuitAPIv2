@@ -8,7 +8,7 @@ package circuitry;
  *
  * @author 20215191
  */
-public class CustomBinaryGate extends BinaryGate{
+class CustomBinaryGate extends BinaryGate{
     
     private CustomBinaryOperation operation;
 

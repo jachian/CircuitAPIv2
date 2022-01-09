@@ -8,7 +8,7 @@ package circuitry;
  *
  * @author 20215191
  */
-public class CustomBinaryFloatGate extends BinaryGate implements FloatFunctions{
+class CustomBinaryFloatGate extends BinaryGate implements FloatFunctions{
     
     private final CustomBinaryFloatOperation operation;
     

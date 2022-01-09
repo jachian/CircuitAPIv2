@@ -9,7 +9,7 @@ package circuitry;
  *
  * @author 20215199
  */
-public class FloatArg 
+class FloatArg 
 {
     // variabels 
     protected boolean isBoolean;

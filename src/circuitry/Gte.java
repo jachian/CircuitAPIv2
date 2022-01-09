@@ -8,7 +8,7 @@ package circuitry;
  *
  * @author 20215187
  */
-public class Gte extends BinaryGate {
+class Gte extends BinaryGate {
 
     @Override
     /**

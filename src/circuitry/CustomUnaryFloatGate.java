@@ -6,7 +6,7 @@ package circuitry;
  *
  * @author 20215191
  */
-public class CustomUnaryFloatGate extends UnaryGate implements FloatFunctions{
+class CustomUnaryFloatGate extends UnaryGate implements FloatFunctions{
 
     private final CustomUnaryFloatOperation operation;
 

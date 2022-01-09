@@ -8,7 +8,7 @@ package circuitry;
  *
  * @author 20215191
  */
-public class NotFloat extends UnaryGate implements FloatFunctions{
+class NotFloat extends UnaryGate implements FloatFunctions{
 
     @Override
     public boolean getValue() {

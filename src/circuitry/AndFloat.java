@@ -9,7 +9,7 @@ package circuitry;
  *
  * @author 20215199
  */
-public class AndFloat extends BinaryGate implements FloatFunctions
+class AndFloat extends BinaryGate implements FloatFunctions
 {
     public AndFloat()
     {

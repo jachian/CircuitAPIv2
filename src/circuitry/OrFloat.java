@@ -9,7 +9,7 @@ package circuitry;
  *
  * @author 20215199
  */
-public class OrFloat extends BinaryGate implements FloatFunctions
+class OrFloat extends BinaryGate implements FloatFunctions
 {
      
     public OrFloat()

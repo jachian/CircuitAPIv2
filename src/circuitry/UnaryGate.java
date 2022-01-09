@@ -13,7 +13,7 @@ package circuitry;
  *
  * @author 20215199
  */
-public class UnaryGate extends Gate
+class UnaryGate extends Gate
 {
     //attributes
     protected Gate inputGate;   // perhaps we can make these into objects
