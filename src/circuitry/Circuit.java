@@ -190,4 +190,10 @@ public final class Circuit{
         Gate andFloatGate = new AndFloat();
         gates.put(gateName, andFloatGate);
     }
+
+    public void addOrFloatGate(String gateName) {
+        Gate orFloatGate = new OrFloat();
+        gates.put(gateName, orFloatGate);
+    }
+
 }

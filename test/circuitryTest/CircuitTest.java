@@ -165,7 +165,7 @@ public class CircuitTest {
         c.setOutputGate("not");
         
         // test the circuit for different inputs 
-	c.setInputValue("X1", true);
+	    c.setInputValue("X1", true);
         
         assertEquals(false, c.run());      
         
@@ -187,7 +187,7 @@ public class CircuitTest {
         c.setOutputGate("not");
         
         // test the circuit for different inputs 
-	c.setInputFloatValue("X1", 0.3);
+	    c.setInputFloatValue("X1", 0.3);
         
         assertEquals(0.7, c.runFloat(), 0.001);      
         
@@ -215,8 +215,8 @@ public class CircuitTest {
         c.setOutputGate("gte");
         
         // test the circuit for different inputs 
-	c.setInputFloatValue("X1", 0.3);
-	c.setInputFloatValue("X2", 0.4);
+	    c.setInputFloatValue("X1", 0.3);
+	    c.setInputFloatValue("X2", 0.4);
         
         assertEquals(false, c.run());      
         
@@ -239,8 +239,8 @@ public class CircuitTest {
         c.setOutputGate("and");
         
         // test the circuit for different inputs 
-	c.setInputFloatValue("X1", 0.3);
-	c.setInputFloatValue("X2", 0.3);
+	    c.setInputFloatValue("X1", 0.3);
+	    c.setInputFloatValue("X2", 0.3);
         
         assertEquals(0.09, c.runFloat(), 0.001);      
         
@@ -255,7 +255,30 @@ public class CircuitTest {
     }
     
     @Test
-    public void testOrFloat(){}
+    public void testOrFloat(){
+        Circuit c = new Circuit();
+        c.addInputFloat("X1");
+        c.addInputFloat("X2");
+        c.addOrFloatGate("or");
+
+        c.connect("or","X1", 1);
+        c.connect("or","X2", 2);
+
+        c.setOutputGate("or");
+
+        //test the circuit for different inputs (Binary and Float)
+        c.setInputFloatValue("X1", 0.6);
+        c.setInputFloatValue("X2", 0.6);
+        assertEquals(0.84, c.runFloat(), 0.001);
+
+        c.setInputFloatValue("X1", 1);
+        c.setInputFloatValue("X2", 1);
+        assertEquals(1, c.runFloat(), 0.001);
+
+        c.setInputFloatValue("X1", 0);
+        c.setInputFloatValue("X2", 0.8);
+        assertEquals(0.8, c.runFloat(), 0.001);
+    }
     
     @Test
     public void testCustomBinaryFloatGate(){}
