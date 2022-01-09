@@ -12,43 +12,41 @@ package circuitry;
 public class FloatArg 
 {
     // variabels 
-    protected boolean isBoolean;   // the boolean component
-    protected double doubleValue;  // the double/floating point
+    protected boolean isBoolean;
+    protected double value;  // the double/floating point
     
     // constructors   ///////////////////
     public FloatArg()
     {
-        this.isBoolean = false;
-        this.doubleValue = 0.00;
+        this.isBoolean = true;
+        this.value = -1;
     }
     
 
-    public FloatArg(boolean bValue, double dValue)
+    public FloatArg(boolean isBoolean, double dValue)
     {
-        this.isBoolean = bValue;
-        this.doubleValue = dValue;
+        this.isBoolean = isBoolean;
+        this.value = dValue;
     }
+
+
     
     /////////////////////// methods   ///////////////////////////////
-    // retuns whether the instance is a boolean or not.
     public boolean getBoolean()
     {
-         return  (doubleValue == 1.00);
+        return value == 1.0;
     }
     
-    // returns the actual double value  /////
     public double getDouble()
     {
-        return doubleValue;
+        return value;
     }
     
-    public void setValue(boolean bValue, double dValue)
+    public void setValue(boolean isBoolean, double dValue)
     {
-        this.isBoolean = bValue;
-        this.doubleValue = dValue;
+        this.isBoolean = isBoolean;
+        this.value = dValue;
     }
-    
-    
     
 }
 

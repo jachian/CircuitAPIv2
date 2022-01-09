@@ -1,74 +1,40 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package circuitry;
 
 /**
  *
- * @author 20215199
+ * @author 20215187
  */
-public class Gte extends FloatBinaryGate
-{
-    public Gte()
-    {
-                
+public class Gte extends BinaryGate {
+
+    @Override
+    /**
+    *
+    * Gets the values from 
+    */
+    public boolean getValue() {
+        FloatArg b1 = null, b2 = null;
+        if (this.inputGate1 instanceof FloatFunctions){
+           b1 = ((FloatFunctions)inputGate1).getFloatValue();
+        }
+        else {
+            double value = inputGate1.getValue() ? 1.0 : 0.0 ;
+            b1 = new FloatArg(false, value);
+                    
+        }
+        if (this.inputGate2 instanceof FloatFunctions) {
+            b2 = ((FloatFunctions)inputGate2).getFloatValue();
+        }
+        else{   
+            double value = inputGate2.getValue() ? 1.0 : 0.0 ;
+            b2 = new FloatArg(false, value);
+        }
+        return b1.getDouble() >= b2.getDouble();
     }
 
-    
-    public FloatArg getFloatValue() 
-    {
-        // placeholders for booleand double conversions.
-        double dLeft = 0.00;
-        double dRight = 0.00;
-        
-        //first check to see if the inputs are both float functions or not...
-        if ((inputGate1 instanceof FloatFunctions) && (inputGate2 instanceof FloatFunctions))  // if we are dealing with float functions
-        {
-            FloatFunctions left = (FloatFunctions)inputGate1;
-            FloatFunctions right = (FloatFunctions)inputGate2;
-            
-            // check if left and right ar both booleans
-            if(left.isBoolean() && (right.isBoolean()))  // if both are booleans then return (true, result)
-            {
-                return new FloatArg(true, binaryGte(left.getDouble(), right.getDouble()));
-            }
-            // if one of the inputs is not a boolean the do the caluclation - i.e return (false, result)
-            return new FloatArg(false, 1.00 - (1.00 - left.getDouble()) * (1.00 - right.getDouble()));
-        }
-        
-        if(inputGate2 instanceof FloatFunctions)  // ie if only the right is a flaot function.
-        {
-            FloatFunctions right = (FloatFunctions)inputGate2;  //cast the float function
-            
-            if(inputGate1.getValue() == true) // convert boolean lhs to double
-                dLeft = 1.00;
-            else
-                dLeft = 0.00;
-            
-            return new FloatArg(false, 1.00 - (1.00 - dLeft) * (1.00 - right.getDouble()));
-            
-        }
-        
-        // if only the left is a float
-        FloatFunctions left = (FloatFunctions)inputGate1;  //cast the float function
-            
-        if(inputGate2.getValue() == true) // convert boolean lhs to double
-           dRight = 1.00;
-        else
-           dRight = 0.00;
-            
-        return new FloatArg(false, 1.00 - (1.00 - left.getDouble()) * (1.00 - dRight));
-                    
-    }
-        
-    
-    private static boolean binaryGte(double lhs, double rhs)
-    {
-        if(lhs >= rhs)
-            return 1.00;
-            
-        return 0.00;
-    }
+  
+   
 }

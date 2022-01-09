@@ -14,6 +14,5 @@ public abstract class Gate
     // attributes
     // mthods
     public abstract boolean getValue(); 
-    public abstract FloatArg getFloatValue();
 
 }
