@@ -8,19 +8,41 @@ package circuitry;
  *
  * @author 20215191
  */
-public class CustomBinaryGate extends BinaryGate{
+public class CustomBinaryFloatGate extends BinaryGate implements FloatFunctions{
     
-    private CustomBinaryOperation operation;
+    private final CustomBinaryFloatOperation operation;
+    
+    public CustomBinaryFloatGate(CustomBinaryFloatOperation operation){
+        this.operation = operation;
+    }
 
     @Override
     public boolean getValue() {
-        boolean v1 = this.inputGate1.getValue();
-        boolean v2 = this.inputGate2.getValue();
-        return operation.doOperation(v1, v2);
+        FloatArg floatValue = getFloatValue();
+        if (!floatValue.getBoolean()) {
+            throw new Error("Vaues between 0 and 1 can not be converted to boolean.");
+        }
+        
+        return floatValue.getBoolean();
     }
-    
-    public void defineCustomOperation(CustomBinaryOperation operation){
-        this.operation = operation;
+
+    @Override
+    public FloatArg getFloatValue(){
+        FloatArg arg1, arg2;
+        
+        if (this.inputGate1 instanceof FloatFunctions){
+            arg1 = ((FloatFunctions)inputGate1).getFloatValue();
+        }else{
+            arg1 = new FloatArg(true, inputGate1.getValue()? 1.0 : 0);
+        }
+        
+        if (this.inputGate2 instanceof FloatFunctions) {
+            arg2 = ((FloatFunctions)inputGate2).getFloatValue();
+        }else{
+            arg2 = new FloatArg(true, inputGate2.getValue()? 1.0 : 0);
+        }
+        
+        return operation.doOperation(arg1.getDouble(), arg2.getDouble());
     }
-    
+
 }

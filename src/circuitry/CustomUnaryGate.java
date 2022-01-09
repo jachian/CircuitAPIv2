@@ -6,9 +6,18 @@ package circuitry;
  *
  * @author 20215191
  */
-public class CustomUnaryGate {
+public class CustomUnaryGate extends UnaryGate{
 
-    public CustomUnaryGate() {
+    private CustomUnaryOperation operation;
+
+    public CustomUnaryGate(CustomUnaryOperation operation){
+        this.operation = operation;
+    }
+
+    @Override
+    public boolean getValue() {
+        boolean v1 = this.inputGate.getValue();
+        return operation.doOperation(v1);
     }
     
 }

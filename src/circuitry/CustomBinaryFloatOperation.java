@@ -8,8 +8,8 @@ package circuitry;
  *
  * @author 20215191
  */
-public interface CustomBinaryOperation {
+public interface CustomBinaryFloatOperation {
     
-    boolean doOperation(boolean op1, boolean op2);
+    FloatArg doOperation(double op1, double op2);
     
 }

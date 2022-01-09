@@ -6,6 +6,8 @@ package circuitry;
  *
  * @author 20215191
  */
-class CustomUnaryOperation {
+interface CustomUnaryOperation {
+
+    public boolean doOperation(boolean arg);
     
 }

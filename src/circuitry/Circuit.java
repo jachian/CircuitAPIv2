@@ -132,36 +132,13 @@ public final class Circuit{
         }
         this.outputGateName = gateName;
     }
-    
     public void addCustomBinaryGate(CustomBinaryOperation operation, String gateName){
-        CustomBinaryGate gate = new CustomBinaryGate();
-        gate.defineCustomOperation(operation);
-        
+        CustomBinaryGate gate = new CustomBinaryGate(operation);
         gates.put(gateName, gate);
     }
     
     public void addCustomUnaryGate(CustomUnaryOperation operation, String gateName){
-        
-//        CutomUnaryGate gate = new CustomUnaryGate();
-        
-        
+        CustomUnaryGate gate = new CustomUnaryGate(operation);
+        gates.put(gateName, gate);
     }
-<<<<<<< HEAD
-=======
-
-    public void addGteGate(String name) {
-        Gte gte = new Gte();
-        gates.put( name, gte);
-        
-    }
-
- 
-
-    public void setInputValue(String name, double value ) {
-        InputFloat f1 = (InputFloat) gates.get(name);
-        f1.setValue(value);
-    }
-
-    
->>>>>>> 3224ab4c3555b6a4e6020714d660ff3a5c94b2df
 }

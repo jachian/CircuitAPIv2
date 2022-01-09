@@ -12,6 +12,10 @@ public class CustomBinaryGate extends BinaryGate{
     
     private CustomBinaryOperation operation;
 
+    public CustomBinaryGate(CustomBinaryOperation operation){
+            this.operation = operation;
+        }
+
     @Override
     public boolean getValue() {
         boolean v1 = this.inputGate1.getValue();
@@ -19,8 +23,6 @@ public class CustomBinaryGate extends BinaryGate{
         return operation.doOperation(v1, v2);
     }
     
-    public void defineCustomOperation(CustomBinaryOperation operation){
-        this.operation = operation;
-    }
+    
     
 }

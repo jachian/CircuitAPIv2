@@ -6,6 +6,8 @@ package circuitry;
  *
  * @author 20215191
  */
-class CustomUnaryOperation {
+public interface CustomUnaryFloatOperation {
+    
+    public double doOperation(double arg);
     
 }

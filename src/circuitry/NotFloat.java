@@ -12,13 +12,15 @@ public class NotFloat extends UnaryGate implements FloatFunctions{
 
     @Override
     public boolean getValue() {
-        return inputGate.getValue();
+        return !inputGate.getValue();
     }
 
     @Override
     public FloatArg getFloatValue() {
         if (inputGate instanceof FloatFunctions) {
-            return ((FloatFunctions)inputGate).getFloatValue();
+            FloatArg arg = ((FloatFunctions)inputGate).getFloatValue();
+            FloatArg result = new FloatArg(false, 1 - arg.getDouble());
+            return result;
         } 
         
         double result = inputGate.getValue()? 0: 1.0;
