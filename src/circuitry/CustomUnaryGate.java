@@ -8,7 +8,7 @@ package circuitry;
  */
 public class CustomUnaryGate extends UnaryGate{
 
-    private CustomUnaryOperation operation;
+        private CustomUnaryOperation operation;
 
     public CustomUnaryGate(CustomUnaryOperation operation){
         this.operation = operation;

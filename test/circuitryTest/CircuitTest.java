@@ -287,5 +287,7 @@ public class CircuitTest {
     public void testCustomUnaryFloatGate(){}
     
     @Test
-    public void testCustomUnaryGate(){}
+    public void testCustomUnaryGate(){
+
+    }
 }

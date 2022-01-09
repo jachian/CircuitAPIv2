@@ -41,12 +41,7 @@ public class FloatArg
     {
         return value;
     }
-    
-    public void setValue(boolean isBoolean, double dValue)
-    {
-        this.isBoolean = isBoolean;
-        this.value = dValue;
-    }
+
     
 }
 
