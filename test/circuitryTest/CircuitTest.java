@@ -6,6 +6,8 @@ package circuitryTest;
 
 import circuitry.Circuit;
 import circuitry.CustomBinaryOperation;
+import circuitry.CustomUnaryGate;
+import circuitry.CustomUnaryOperation;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -288,6 +290,22 @@ public class CircuitTest {
     
     @Test
     public void testCustomUnaryGate(){
+        Circuit c = new Circuit();
+        c.addInput("X1");
+
+        c.addCustomUnaryGate(new CustomUnaryOperation() {
+            @Override
+            public boolean doOperation(boolean op1) { return !op1; }
+        }, "not");
+
+        c.connect("not", "X1", 1);
+
+        c.setOutputGate("not");
+
+        c.setInputValue("X1", false);
+
+        assertEquals(true, c.run());
+
 
     }
 }
