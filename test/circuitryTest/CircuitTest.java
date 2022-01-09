@@ -6,7 +6,7 @@ package circuitryTest;
 
 import circuitry.Circuit;
 import circuitry.CustomBinaryOperation;
-import circuitry.CustomUnaryGate;
+import circuitry.CustomUnaryFloatOperation;
 import circuitry.CustomUnaryOperation;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -286,26 +286,28 @@ public class CircuitTest {
     public void testCustomBinaryFloatGate(){}
     
     @Test
-    public void testCustomUnaryFloatGate(){}
+    public void testCustomUnaryFloatGate(){
+        Circuit c = new Circuit();
+        
+        c.addInputFloat("X1");
+        c.addCustomUnaryFloatGate(new CustomUnaryFloatOperation() {
+            @Override
+            public double doOperation(double arg) {
+                return 1/arg;
+            }
+        }, "1/x");
+        
+        c.connect("1/x", "X1", 1);
+        
+        c.setOutputGate("1/x");
+        
+        // test the circuit for different inputs 
+        c.setInputFloatValue("X1", 0.1);
+        assertEquals(10, c.runFloat(), 0.001);      
+    }
     
     @Test
     public void testCustomUnaryGate(){
-        Circuit c = new Circuit();
-        c.addInput("X1");
-
-        c.addCustomUnaryGate(new CustomUnaryOperation() {
-            @Override
-            public boolean doOperation(boolean op1) { return !op1; }
-        }, "not");
-
-        c.connect("not", "X1", 1);
-
-        c.setOutputGate("not");
-
-        c.setInputValue("X1", false);
-
-        assertEquals(true, c.run());
-
 
     }
 }

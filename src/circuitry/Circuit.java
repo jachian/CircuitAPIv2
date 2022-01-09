@@ -193,4 +193,9 @@ public final class Circuit{
         gates.put(gateName, orFloatGate);
     }
 
+    public void addCustomUnaryFloatGate(CustomUnaryFloatOperation customUnaryFloatOperation, String gateName) {
+        Gate gate = new CustomUnaryFloatGate(customUnaryFloatOperation);
+        gates.put(gateName, gate);
+    }
+
 }
