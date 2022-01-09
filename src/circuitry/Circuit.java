@@ -10,7 +10,7 @@ import java.util.Map;
  * finally run the simulation by calling the method run.
  * @author group 4
  */
-public class Circuit{
+public final class Circuit{
     private final Map<String, Gate> gates = new HashMap<>();
     private String outputGateName = null;
 
@@ -101,6 +101,10 @@ public class Circuit{
         return gates.get(outputGateName).getValue();
     }
     
+    public Result run(boolean hasFloats){
+        return new Result(false, 0.1f);
+    }
+    
     /**
      * Sets the level of the input gate to high (true) or low (false)
      * @param inputName name of the input gate
@@ -127,5 +131,19 @@ public class Circuit{
             throw new Error(gateName + " not found.");
         }
         this.outputGateName = gateName;
+    }
+    
+    public void addCustomBinaryGate(CustomBinaryOperation operation, String gateName){
+        CustomBinaryGate gate = new CustomBinaryGate();
+        gate.defineCustomOperation(operation);
+        
+        gates.put(gateName, gate);
+    }
+    
+    public void addCustomUnaryGate(CustomUnaryOperation operation, String gateName){
+        
+//        CutomUnaryGate gate = new CustomUnaryGate();
+        
+        
     }
 }
