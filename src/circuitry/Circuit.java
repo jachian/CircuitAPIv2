@@ -141,4 +141,53 @@ public final class Circuit{
         CustomUnaryGate gate = new CustomUnaryGate(operation);
         gates.put(gateName, gate);
     }
+
+    public void addNotFloatGate(String not) {
+        NotFloat gate = new NotFloat();
+        gates.put(not, gate);
+    }
+
+    public void setInputFloatValue(String inputName, double value) {
+        if (!gates.containsKey(inputName)) {
+            throw new Error(inputName + " not found.");
+        }
+        
+        Gate input = gates.get(inputName);
+        if (!(input instanceof InputFloat)) {
+          throw new Error(inputName + " is not a float input gate.");
+        } 
+        ((InputFloat)input).setValue(value);
+    }
+
+    public double runFloat() {
+        if (outputGateName == null) {
+            throw new Error("Set output gate first.");
+        }
+        if (!gates.containsKey(outputGateName)){
+            throw new Error("output gate " + outputGateName + " not found.");
+        }
+        
+        Gate outputGate = gates.get(outputGateName);
+        
+        if (!(outputGate instanceof FloatFunctions)){
+            throw new Error(outputGateName + " is a binary gate. use run() instead.");
+        }
+        
+        return ((FloatFunctions) outputGate).getFloatValue().getDouble();
+    }
+
+    public void addInputFloat(String inputGateName) {
+        InputFloat input = new InputFloat();
+        gates.put(inputGateName, input);
+    }
+
+    public void addGteGate(String inputGateName) {
+        Gate gte = new Gte();
+        gates.put(inputGateName, gte);
+    }
+
+    public void addAndFloatGate(String gateName) {
+        Gate andFloatGate = new AndFloat();
+        gates.put(gateName, andFloatGate);
+    }
 }

@@ -154,16 +154,105 @@ public class CircuitTest {
     }
     
     @Test
-    public void testNot(){}
+    public void testNot(){
+        Circuit c = new Circuit();
+        
+        c.addInput("X1");
+        c.addNotGate("not");
+        
+        c.connect("not", "X1", 1);
+        
+        c.setOutputGate("not");
+        
+        // test the circuit for different inputs 
+	c.setInputValue("X1", true);
+        
+        assertEquals(false, c.run());      
+        
+        c.setInputValue("X1", false);
+        
+        assertEquals(true, c.run()); 
+    }
     
     @Test
-    public void testNotFloat(){}
+    public void testNotFloat(){
+        
+        Circuit c = new Circuit();
+        
+        c.addInputFloat("X1");
+        c.addNotFloatGate("not");
+        
+        c.connect("not", "X1", 1);
+        
+        c.setOutputGate("not");
+        
+        // test the circuit for different inputs 
+	c.setInputFloatValue("X1", 0.3);
+        
+        assertEquals(0.7, c.runFloat(), 0.001);      
+        
+        c.setInputFloatValue("X1", 0);
+        
+        assertEquals(1.0, c.runFloat(), 0.001); 
+        
+        
+        c.setInputFloatValue("X1", 1);
+        
+        assertEquals(0, c.runFloat(), 0.001); 
+    }
     
     @Test
-    public void testGte(){}
+    public void testGte(){
+        Circuit c = new Circuit();
+        
+        c.addInputFloat("X1");
+        c.addInputFloat("X2");
+        c.addGteGate("gte");
+        
+        c.connect("gte", "X1", 1);
+        c.connect("gte", "X2", 2);
+        
+        c.setOutputGate("gte");
+        
+        // test the circuit for different inputs 
+	c.setInputFloatValue("X1", 0.3);
+	c.setInputFloatValue("X2", 0.4);
+        
+        assertEquals(false, c.run());      
+        
+        c.setInputFloatValue("X1", 0.5);
+        
+        assertEquals(true, c.run());
+    }
     
     @Test
-    public void testAndFloat(){}
+    public void testAndFloat(){
+        Circuit c = new Circuit();
+        
+        c.addInputFloat("X1");
+        c.addInputFloat("X2");
+        c.addAndFloatGate("and");
+        
+        c.connect("and", "X1", 1);
+        c.connect("and", "X2", 2);
+        
+        c.setOutputGate("and");
+        
+        // test the circuit for different inputs 
+	c.setInputFloatValue("X1", 0.3);
+	c.setInputFloatValue("X2", 0.3);
+        
+        assertEquals(0.09, c.runFloat(), 0.001);      
+        
+        c.setInputFloatValue("X1", 0);
+        
+        assertEquals(0.0, c.runFloat(), 0.001); 
+        
+        
+        c.setInputFloatValue("X1", 1);
+        
+        assertEquals(0.3, c.runFloat(), 0.001); 
+    }
     
     @Test
     public void testOrFloat(){}
