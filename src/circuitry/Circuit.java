@@ -198,4 +198,9 @@ public final class Circuit{
         gates.put(gateName, gate);
     }
 
+    public void addCustomBinaryFloatGate(CustomBinaryFloatOperation customBinaryFloatOperation, String gateName) {
+        Gate gate = new CustomBinaryFloatGate(customBinaryFloatOperation);
+        gates.put(gateName, gate);
+    }
+
 }

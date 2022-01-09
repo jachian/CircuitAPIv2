@@ -10,6 +10,6 @@ package circuitry;
  */
 public interface CustomBinaryFloatOperation {
     
-    FloatArg doOperation(double op1, double op2);
+    double doOperation(double op1, double op2);
     
 }

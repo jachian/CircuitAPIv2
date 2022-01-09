@@ -30,19 +30,23 @@ class CustomBinaryFloatGate extends BinaryGate implements FloatFunctions{
     public FloatArg getFloatValue(){
         FloatArg arg1, arg2;
         
+        boolean isBoolean = true;
+        
         if (this.inputGate1 instanceof FloatFunctions){
             arg1 = ((FloatFunctions)inputGate1).getFloatValue();
+            isBoolean = false;
         }else{
             arg1 = new FloatArg(true, inputGate1.getValue()? 1.0 : 0);
         }
         
         if (this.inputGate2 instanceof FloatFunctions) {
             arg2 = ((FloatFunctions)inputGate2).getFloatValue();
+            isBoolean = false;
         }else{
             arg2 = new FloatArg(true, inputGate2.getValue()? 1.0 : 0);
         }
-        
-        return operation.doOperation(arg1.getDouble(), arg2.getDouble());
+        double result = operation.doOperation(arg1.getDouble(), arg2.getDouble());
+        return new FloatArg(isBoolean, result);
     }
 
 }

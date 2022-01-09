@@ -283,7 +283,33 @@ public class CircuitTest {
     }
     
     @Test
-    public void testCustomBinaryFloatGate(){}
+    public void testCustomBinaryFloatGate()
+    {
+        Circuit c = new Circuit();
+        
+        c.addInputFloat("Y1");
+        c.addInputFloat("Y2");
+        
+        c.addCustomBinaryFloatGate((double op1, double op2) -> op1 * op2, "mult");
+        
+        c.connect("mult", "Y1", 1);
+        c.connect("mult", "Y2", 2);
+        
+        c.setOutputGate("mult");
+        
+        c.setInputFloatValue("Y1", 0.00);
+        c.setInputFloatValue("Y2", 1.00);
+        assertEquals(0.00, c.runFloat(), 0.001);
+        
+        c.setInputFloatValue("Y1", 1.00);
+        c.setInputFloatValue("Y2", 0.5);
+        assertEquals(0.5, c.runFloat(), 0.001);
+        
+        c.setInputFloatValue("Y1", 0.25);
+        c.setInputFloatValue("Y2", 1.00);
+        assertEquals(0.25, c.runFloat(), 0.001);
+    
+    }
     
     @Test
     public void testCustomUnaryFloatGate(){
