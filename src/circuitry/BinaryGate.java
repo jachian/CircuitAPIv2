@@ -52,18 +52,10 @@ public class BinaryGate extends Gate
      * Gets the value from gates
      * @return result
      */
-    @Override
     public boolean getValue()
     {
         return false;
     }
-    
-    @Override
-    public FloatArg getFloatValue()
-    {
-        return new FloatArg(false, 0.00);
-    }
-     
     
     
 }

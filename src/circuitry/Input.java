@@ -25,22 +25,9 @@ public class Input extends Gate
         //this.value = value;
     //}
     
-    
-    @Override
     public boolean getValue()
     {
         return this.value;
-    }
-    
-    @Override
-    public FloatArg getFloatValue()
-    {
-        double boolValue = 0.00;
-        
-        if(this.value == true)
-            boolValue = 1.00;
-        
-        return new FloatArg(true,boolValue);
     }
     
     public void setValue(boolean newValue)
