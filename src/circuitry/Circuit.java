@@ -100,10 +100,7 @@ public final class Circuit{
         }
         return gates.get(outputGateName).getValue();
     }
-    
-    public Result run(boolean hasFloats){
-        return new Result(false, 0.1f);
-    }
+
     
     /**
      * Sets the level of the input gate to high (true) or low (false)
