@@ -14,6 +14,9 @@ class InputFloat extends Gate implements FloatFunctions{
     
     @Override
     public boolean getValue() {
+        if (value.getDouble() != 0 && value.getDouble() != 1.0) {
+            throw new Error("Double value " + value.getDouble() + " can not be converted to boolean.");
+        }
         return value.getDouble() == 1.0 ;
         
     }

@@ -8,14 +8,21 @@ import circuitry.Circuit;
 import circuitry.CustomBinaryOperation;
 import circuitry.CustomUnaryFloatOperation;
 import circuitry.CustomUnaryOperation;
+import org.hamcrest.Matcher;
+import org.hamcrest.core.StringEndsWith;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 /**
  *
  * @author 20215191
  */
 public class CircuitTest {
+    
+    @Rule
+    public ExpectedException rule = ExpectedException.none();
     
     public CircuitTest() {
     }
@@ -354,5 +361,33 @@ public class CircuitTest {
 
 
 
+    }
+    
+    @Test
+    public void testFloatNot(){
+        rule.expectMessage(new StringEndsWith(" can not be converted to boolean."));
+        
+        Circuit c = new Circuit();
+        c.addInputFloat("x1");
+        c.addNotFloatGate("not");
+        
+        c.connect("not", "x1", 1);
+        c.setInputFloatValue("x1", 0.2);
+        c.setOutputGate("not");
+        
+        assertEquals(false, c.run());
+    }
+    
+    @Test
+    public void testFloatOutOfRange(){
+        rule.expectMessage("Input value should be between 0 and 1 inclusive.");
+        
+        Circuit c = new Circuit();
+        c.addInputFloat("x1");
+        c.addNotFloatGate("not");
+        
+        c.connect("not", "x1", 1);
+        c.setInputFloatValue("x1", 1.9);
+        c.setOutputGate("not");
     }
 }

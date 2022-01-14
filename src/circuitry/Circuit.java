@@ -153,6 +153,9 @@ public final class Circuit{
         if (!(input instanceof InputFloat)) {
           throw new Error(inputName + " is not a float input gate.");
         } 
+        if (value < 0 || value > 1) {
+            throw new Error("Input value should be between 0 and 1 inclusive.");
+        }
         ((InputFloat)input).setValue(value);
     }
 
